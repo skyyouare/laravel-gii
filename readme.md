@@ -21,13 +21,9 @@ $ composer require skyyouare/laravel-gii
 
 2、php artisan ui vue
 
-3、npm install element-ui  --save-dev
+3、npm install element-ui vue-router qs --save-dev
 
-4、npm install vue-router  --save-dev
-
-5、npm install qs --save-dev
-
-6、php artisan vendor:publish  --tag laravel-gii
+4、php artisan vendor:publish  --tag laravel-gii
 ```
 
 ## Change log
