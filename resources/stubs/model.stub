@@ -102,7 +102,7 @@ class {{base_model_class}}Model extends {{base_model_class}}
 
         foreach ($params as $k => $v) {
             if (isset($params[$k])) {
-                $obj->$k = $v;
+                $obj->setAttribute($k,$v);
             }
         }
 
