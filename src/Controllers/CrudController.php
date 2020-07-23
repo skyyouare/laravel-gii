@@ -60,16 +60,18 @@ class CrudController extends Controller
         $arr = [];
         foreach($model_base_path_arr as $path => $namespace){
             $base_dir = base_path($path);
-            // 扫描目录下的所有文件
-            $filename = scandir($base_dir);
-            foreach($filename as $k=>$v){
-                // 跳过两个特殊目录   continue跳出循环
-                if($v=="." || $v==".."){continue;}
-                $class_name = substr($v,0,strpos($v,"."));
-                //忽略的控制器
-                if(empty($class_name)) continue;
-                if(strrchr($class_name,'Model')=='Model') continue;
-                $arr[] = $namespace.'\\'.$class_name;
+            if(file_exists($base_dir)){
+                // 扫描目录下的所有文件
+                $filename = scandir($base_dir);
+                foreach($filename as $k=>$v){
+                    // 跳过两个特殊目录   continue跳出循环
+                    if($v=="." || $v==".."){continue;}
+                    $class_name = substr($v,0,strpos($v,"."));
+                    //忽略的控制器
+                    if(empty($class_name)) continue;
+                    if(strrchr($class_name,'Model')=='Model') continue;
+                    $arr[] = $namespace.'\\'.$class_name;
+                }
             }
         }
         return $arr;
