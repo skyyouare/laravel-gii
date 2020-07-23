@@ -1,4 +1,4 @@
-# gii
+# laravel-gii
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -21,9 +21,9 @@ $ composer require skyyouare/laravel-gii
 
 2、php artisan ui vue
 
-3、npm install element-ui  —save-dev
+3、npm install element-ui  --save-dev
 
-4、npm install vue-router  —save-dev
+4、npm install vue-router  --save-dev
 
 5、npm install qs —save-dev
 
