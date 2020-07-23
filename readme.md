@@ -27,23 +27,17 @@ $ composer require skyyouare/laravel-gii
 
 5、npm install qs --save-dev
 
-6、php artisan vendor:publish   --tag gii.config --force
-
-7、php artisan vendor:publish   --tag gii.views --force
-
-8、php artisan vendor:publish   --tag gii.images --force
-
-9、php artisan vendor:publish   --tag gii.js --force
-
-10、php artisan vendor:publish   --tag gii.blade --force
-
-11、php artisan vendor:publish   --tag gii.sass --force
-
-12、php artisan vendor:publish   --tag gii.controller --force
-
-13、php artisan vendor:publish   --tag gii.route --force
-
-14、php artisan vendor:publish   --tag gii.exception --force
+6、php artisan vendor:publish  --tag laravel-gii
+或
+    php artisan vendor:publish   --tag gii.config --force
+    php artisan vendor:publish   --tag gii.views --force
+    php artisan vendor:publish   --tag gii.images --force
+    php artisan vendor:publish   --tag gii.js --force
+    php artisan vendor:publish   --tag gii.blade --force
+    php artisan vendor:publish   --tag gii.sass --force
+    php artisan vendor:publish   --tag gii.controller --force
+    php artisan vendor:publish   --tag gii.route --force
+    php artisan vendor:publish   --tag gii.exception --force
 
 ## Change log
 
