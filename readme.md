@@ -25,7 +25,7 @@ $ composer require skyyouare/laravel-gii
 
 4、npm install vue-router  --save-dev
 
-5、npm install qs —save-dev
+5、npm install qs --save-dev
 
 6、php artisan vendor:publish   --tag gii.config --force
 
