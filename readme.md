@@ -23,7 +23,7 @@ $ composer require skyyouare/laravel-gii
 
 3、npm install element-ui vue-router qs --save-dev
 
-4、php artisan vendor:publish  --tag laravel-gii --force
+4、php artisan vendor:publish  --tag gii.config --tag gii.views --tag gii.images --tag gii.js --tag gii.blade --tag  gii.sass --tag gii.controller --tag gii.route --tag gii.exception  --force
 ```
 
 ## Change log
