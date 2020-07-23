@@ -1,0 +1,121 @@
+/**pengzezhou 弹框背景**/
+.c_dialog .el-dialog__footer,.c_dialog .el-dialog__header{background-color: #f4f4f4}
+/**[解决屏幕闪动显示vue源码问题]*/
+ [v-cloak]{display: none;}
+
+.c_pointer{cursor: pointer;}
+a{text-decoration:unset;}
+.inline_a{display: flex;justify-content: space-between;width: 100%}
+.c_eltab{text-align: right;}
+.c_elrow{margin-bottom: 5px;}
+.myclass .c_elrow{height: 25px;line-height: 25px;}
+.c_nocursor{cursor: text;padding-left: 10px;}
+.c_el_p{height: 25px;line-height: 25px;}
+/**截图**/
+.cropper-content {
+    .cropper {
+        width: auto;
+        height: 300px;
+    }
+}
+.btn_upload{
+	display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #c0ccda;
+    color: #1f2d3d;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin:20px 10px 0px 0px;
+    padding: 9px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #FC690D;
+    border-color: #FC690D;
+    transition: all .2s ease;
+    text-decoration: none;
+    user-select: none;
+}
+.table_head{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    background-color: white;
+    margin-top: 20px;
+    padding:5px;
+}
+/**消息中心内容行间距*/
+.msgcontent i{
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.self_color,.el-tabs__item.is-active{
+    color:#FC690D;
+}
+.el-tabs__item:hover{
+    color:unset;
+}
+.el-tabs__active-bar{
+    background-color:#FC690D;
+}
+.myclass .el-tabs__nav-scroll{
+    background-color:#FFFFFF;
+}
+.myclass .el-tabs--border-card>.el-tabs__header .el-tabs__item{
+    border: unset
+}
+.ltc_black{
+    color:#000000;
+}
+.ltc_buttonspan{
+    cursor: pointer;
+    color:#FC690D;
+}
+.ltc_buttonblack{
+    color:#606266;
+}
+.self_title{
+    color: black;
+}
+.self_title_child{
+    color: rgb(104, 104, 104);
+}
+.self_box_title{
+    font-size: 14px;
+    color:rgba(0,0,0,0.85);
+}
+.self_describe_box {
+    color: #000;
+    font-weight: normal;
+    margin: 10px 0 0 0;
+    line-height: 24px;
+}
+/**
+ * 替换element.css
+ */
+.el-button--primary{
+    background-color: #FC690D;
+    border-color: #FC690D;
+}
+/**
+ * 替换element.css
+ */
+.el-button--primary:focus,.el-button--primary:hover{
+    background-color: #FC690D;
+    border-color: #FC690D;
+}
+
+.lh30{
+    line-height: 30px;
+}
+
+.tbody .tr .td{
+    overflow: hidden;
+}
+.tbody .tr .td p,.tbody .tr .td h3,.tbody .tr .td div{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,117 @@
+<?php
+
+namespace {{observer_namespace}};
+
+use {{base_model_class_name}};
+
+class {{observer_class}}
+{
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function retrieved({{base_model_class}} $model)
+    {
+
+    }
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function saving({{base_model_class}} $model)
+    {
+
+    }
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function saved({{base_model_class}} $model)
+    {
+
+    }
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function creating({{base_model_class}} $model)
+    {
+
+    }
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function created({{base_model_class}} $model)
+    {
+
+    }
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function updating({{base_model_class}} $model)
+    {
+
+    }
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function updated({{base_model_class}} $model)
+    {
+
+    }
+
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function deleting({{base_model_class}} $model)
+    {
+
+    }
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function deleted({{base_model_class}} $model)
+    {
+
+    }
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function forceDeleted({{base_model_class}} $model)
+    {
+
+    }
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function restoring({{base_model_class}} $model)
+    {
+
+    }
+
+    /**
+     * @param  \{{base_model_class_name}}  $model
+     * @return void
+     */
+    public function restored({{base_model_class}} $model)
+    {
+
+    }
+}

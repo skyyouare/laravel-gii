@@ -1,0 +1,55 @@
+<template>
+    <div class="content">
+        <!--***content start***-->
+        <div class="pending">
+            <div>
+                <el-breadcrumb separator-class="el-icon-arrow-right">
+                    <el-breadcrumb-item>{{table_name}}</el-breadcrumb-item>
+                    <el-breadcrumb-item>详情</el-breadcrumb-item>
+                </el-breadcrumb>
+            </div>
+            <div>
+                <el-row class="c_elrow" style="margin:10px 20px 0 20px;">
+                    <el-col :span="24" style="height: 50px;background-color: #F2F2F2;"  class="table_head">
+                        <span class="c_nocursor" style="font-size:14px;line-height: 40px;">基本信息</span>
+                    </el-col>
+                </el-row>
+                <el-container>
+                    <el-main>
+                        <el-row>
+                            <el-col :span="24" >
+                                <el-tabs type="border-card">{{detail_fields}}
+                                </el-tabs>
+                            </el-col>
+                        </el-row>
+                    </el-main>
+                </el-container>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                elcolspan:4,
+                data :[]
+            }
+        },
+        methods: {
+            initDetailData: function() {
+                var selfthis = this;
+                var params = {};
+                var url = '{{rest_base_api}}/' + this.$route.query.id;
+                selfthis.ajaxGet(selfthis, url, params, function (selfthis, datas) {
+                    //详情
+                    selfthis.data = datas;
+                });
+            }
+        },
+        mounted() {
+            console.log("detail mounted.");
+            this.initDetailData();
+        },
+    }
+</script>

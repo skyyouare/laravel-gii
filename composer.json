@@ -1,0 +1,44 @@
+{
+    "name": "skyyouare/laravel-gii",
+    "description": "laravel gii vue element-ui",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "doujinya",
+            "email": "401298791@qq.com"
+        }
+    ],
+    "homepage": "https://github.com/skyyouare/laravel-gii",
+    "keywords": ["Laravel", "gii", "vue", "element-ui"],
+    "require": {
+        "illuminate/support": "~5|~6|~7",
+        "sebastian/diff": "^3.0",
+        "doctrine/dbal": "^2.10"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3|~4",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Skyyouare\\Gii\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Skyyouare\\Gii\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Skyyouare\\Gii\\GiiServiceProvider"
+            ],
+            "aliases": {
+                "gii": "Skyyouare\\Gii\\Facades\\Gii"
+            }
+        }
+    }
+}

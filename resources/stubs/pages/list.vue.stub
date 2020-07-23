@@ -1,0 +1,111 @@
+<template>
+    <div class="content">
+        <div class="pending">
+            <div class="header">
+                <div class="name">
+                    {{table_name}}
+                </div>
+                <div class="operate">
+                    <div class="btn_normal btn_special" @click="handle_add()">新增</div>
+                    <Hsearch-component ref="hesarch_ref" :hsearch_fields="hsearch_fields"></Hsearch-component>
+                </div>
+            </div>
+            <div class="table_title">
+                <!-- <ul>
+                    <li v-for="titleItem in  pendingList" :class="pendingActive === titleItem.name ? 'titleActive' : ''"
+                        @Click="pendingClick(titleItem)">{{titleItem.name}}<span>{{titleItem.num}}</span></li>
+                </ul> -->
+            </div>
+            <div class="thead">
+                <div class="tr">{{table_header}}
+                    <div class="td">操作</div>
+                </div>
+            </div>
+            <div class="tbody">
+                <div class="tr" v-for="(items,key) in list">{{table_body}}
+                    <div class="td">
+                        <i class="font_special" @click="handle_view(items)">
+                            查看
+                        </i>
+                        <i class="font_special" @click="handle_edit(items)">
+                            编辑
+                        </i>
+                         <i class="font_special" @click="handle_delete(items)">
+                            删除
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagation">
+            <page-component :page_total="page_total" ref="page_ref"></page-component>
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                hsearch_fields: [
+{{hsearchFields}}
+                ],
+                page_total: 0,
+                list: []
+            }
+        },
+        methods: {
+            //列表 params分页等
+            initlist: function (params) {
+                console.log('initlist');
+                console.log(params);
+                var selfthis = this;
+                var url = '{{rest_base_api}}';
+                selfthis.ajaxGet(selfthis, url, params, function (selfthis, datas) {
+                    //列表
+                    selfthis.list = datas.data;
+                    //分页设置
+                    selfthis.page_total = datas.total;
+                });
+            },
+            //高级搜索提交
+            highsearch_submit: function () {
+                var params = this.$refs.hesarch_ref.highSearch_data;
+                this.$refs.page_ref.page_init(this.initlist, params);
+                this.$refs.hesarch_ref.dialogVisible_highSearch = false;
+            },
+            //查看详情操作
+            handle_view: function (item, key) {
+                location.href = '{{base_route_path}}/detail?id=' + item.{{model_key_name}};
+            },
+            //新增
+            handle_add: function (item, key) {
+                location.href = '{{base_route_path}}/create';
+            },
+            //编辑
+            handle_edit: function (item, key) {
+                location.href = '{{base_route_path}}/edit?id=' + item.{{model_key_name}};
+            },
+            //删除
+            handle_delete: function (item, key) {
+                var req_data = {};
+                var url = '{{rest_base_api}}/' + item.{{model_key_name}};
+                var selfthis = this;
+                selfthis.ajaxDelete(selfthis,url,req_data,function(selfthis,result){
+                    //console.log(result);return false;
+                    selfthis.$message({
+                        message: '删除成功！',
+                        type: 'success'
+                    });
+                    setTimeout(function jump() {
+                        location.href='{{base_route_path}}/list';
+                    },1000);
+                })
+            }
+        },
+        mounted() {
+            console.log("list mounted.");
+            var params = {};
+            this.$refs.page_ref.page_init(this.initlist, params);
+        },
+    }
+</script>

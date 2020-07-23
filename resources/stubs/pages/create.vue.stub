@@ -1,0 +1,61 @@
+<template>
+    <div class="content">
+        <div>
+            <el-breadcrumb separator-class="el-icon-arrow-right">
+                <!--<el-breadcrumb-item ><a href="/">首页</a></el-breadcrumb-item>-->
+                <el-breadcrumb-item>{{table_name}}</el-breadcrumb-item>
+                <el-breadcrumb-item>创建</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
+        <div class="table_title" style="padding-top:10px;"></div>
+        <el-form :model="data" :rules="rules" ref="data" label-width="120px" style="width:80%">
+{{form_fields}}
+            <!--创建按钮-->
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('data')">立即创建</el-button>
+            </el-form-item>
+
+        </el-form>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                data: {
+{{fields_info}}
+                },
+                rules: {
+                }
+            };
+        },
+        methods: {
+            submitForm(formName) {
+                var selfthis = this;
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        //提交表单
+                        var req_data = selfthis.data;
+                        var url = '{{rest_base_api}}';
+                        selfthis.ajaxPost(selfthis,url,req_data,function(selfthis,result){
+                            //console.log(result);return false;
+                            selfthis.$message({
+                                message: '提交成功！',
+                                type: 'success'
+                            });
+                            setTimeout(function jump() {
+                                location.href='{{base_route_path}}/list';
+                            },1000);
+                        })
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+        },
+        mounted() {
+            console.log("detail mounted.");
+        },
+    }
+</script>
