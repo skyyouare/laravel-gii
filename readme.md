@@ -16,7 +16,7 @@ $ composer require skyyouare/laravel-gii
 ```
 
 ## Usage
-
+```
 1、composer require laravel/ui --dev
 
 2、php artisan ui vue
@@ -28,16 +28,7 @@ $ composer require skyyouare/laravel-gii
 5、npm install qs --save-dev
 
 6、php artisan vendor:publish  --tag laravel-gii
-或
-    php artisan vendor:publish   --tag gii.config --force
-    php artisan vendor:publish   --tag gii.views --force
-    php artisan vendor:publish   --tag gii.images --force
-    php artisan vendor:publish   --tag gii.js --force
-    php artisan vendor:publish   --tag gii.blade --force
-    php artisan vendor:publish   --tag gii.sass --force
-    php artisan vendor:publish   --tag gii.controller --force
-    php artisan vendor:publish   --tag gii.route --force
-    php artisan vendor:publish   --tag gii.exception --force
+```
 
 ## Change log
 
