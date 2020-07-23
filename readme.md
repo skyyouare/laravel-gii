@@ -16,15 +16,35 @@ $ composer require skyyouare/laravel-gii
 ```
 
 ## Usage
-1、php artisan vendor:publish   --tag gii.config --force
-2、php artisan vendor:publish   --tag gii.views --force
-3、php artisan vendor:publish   --tag gii.images --force
-4、php artisan vendor:publish   --tag gii.js --force
-5、php artisan vendor:publish   --tag gii.blade --force
-6、php artisan vendor:publish   --tag gii.sass --force
-7、php artisan vendor:publish   --tag gii.controller --force
-8、php artisan vendor:publish   --tag gii.route --force
-9、php artisan vendor:publish   --tag gii.exception --force
+
+1、composer require laravel/ui --dev
+
+2、php artisan ui vue
+
+3、npm install element-ui  —save-dev
+
+4、npm install vue-router  —save-dev
+
+5、npm install qs —save-dev
+
+6、php artisan vendor:publish   --tag gii.config --force
+
+7、php artisan vendor:publish   --tag gii.views --force
+
+8、php artisan vendor:publish   --tag gii.images --force
+
+9、php artisan vendor:publish   --tag gii.js --force
+
+10、php artisan vendor:publish   --tag gii.blade --force
+
+11、php artisan vendor:publish   --tag gii.sass --force
+
+12、php artisan vendor:publish   --tag gii.controller --force
+
+13、php artisan vendor:publish   --tag gii.route --force
+
+14、php artisan vendor:publish   --tag gii.exception --force
+
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
