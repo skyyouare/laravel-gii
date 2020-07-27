@@ -1,6 +1,6 @@
 <template>
     <ul class="nav_list">
-        <li class="nav_item " v-for="(navItem,index) in navList">
+        <li class="nav_item c_pointer" v-for="(navItem,index) in navList">
             <div :class=" navItem.children.indexOf(navChild) !== -1 ? 'navChild_active' :navActive === navItem.name ? 'nav_item_active ' : ''"
                 @click='navItemClick(navItem,index)'>
                 <i><img :src="(navItem.children.indexOf(navChild) !== -1 ||navActive === navItem.name) ? navItem.tagIcon: navItem.icon"
@@ -9,7 +9,7 @@
                 <span v-if="!navItem.isShow"><img src="/images/icon/icon_xiala.png" alt=""></span>
                 <span v-else><img src="/images/icon/icon_shouqi.png" alt=""></span>
             </div>
-            <div v-show="navItem.isShow" :class="navChild === item ? 'nav_item_active navChild' :'navChild'"
+            <div v-show="navItem.isShow" :class="navChild === item ? 'nav_item_active navChild c_pointer' :'navChild c_pointer'"
                 v-for="(item,index) in navItem.children" @click='navChildClick(item)'>
                 {{item}}
             </div>
