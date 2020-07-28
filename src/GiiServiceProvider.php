@@ -90,6 +90,10 @@ class GiiServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/controllers' =>  base_path('app/Http/Controllers'),
         ], 'gii.controller');
+        //publishing request
+        $this->publishes([
+            __DIR__.'/../resources/Requests' =>  base_path('app/Http/Requests'),
+        ], 'gii.request');
         //publishing route
         $this->publishes([
             __DIR__.'/../resources/routes' =>  base_path('routes'),

@@ -34,9 +34,6 @@ class {{base_model_class}} extends {{model_parent_class}}
 
     ];
 
-    public $rules = [
-        {{rules}}
-    ];
 
     //高级搜索定义 支持 = like > < >= <=
     public  function  search_type($model){

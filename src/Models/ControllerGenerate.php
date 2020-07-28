@@ -56,6 +56,16 @@ class ControllerGenerate extends BaseGenerate
      */
     protected $modelKeyName;
 
+     /**
+     * @var
+     */
+    protected $validateClass;
+
+     /**
+     * @var
+     */
+    protected $validateClassName;
+
 
     /**
      * Route mapping controller method
@@ -112,6 +122,9 @@ class ControllerGenerate extends BaseGenerate
         $this->modelNamespace = trim(substr($modelClassName, 0, strrpos($modelClassName, '\\')), '\\');
         $this->modelClass     = end($modelClassNameArr);
 
+        // validate
+        $this->validateClass     = $this->modelClass . 'Requests';
+        $this->validateClassName = str_replace('Models', 'Http\\Requests', $this->modelNamespace) . '\\' . $this->validateClass;
         $this->controllerClassMini = str_replace('controller', '', strtolower($this->controllerClass));
 
         // /account-book/api/manage/user/list
@@ -166,6 +179,8 @@ class ControllerGenerate extends BaseGenerate
             '{{controller_class}}'     => $this->controllerClass,
             '{{model_keyname}}'        => $this->modelKeyName,
             '{{model_class}}'          => $modelClass,
+            '{{validate_class}}'        => $this->validateClass,
+            '{{validate_class_name}}'    => $this->validateClassName,
         ];
 
         return self::handleFile($this->controllerNamespace, $this->controllerClass, $fields, $stubFile);
@@ -605,6 +620,7 @@ class ControllerGenerate extends BaseGenerate
 
         $cols = $schema->listTableDetails($this->model->getTable());
         return $cols->getOption('comment')?$cols->getOption('comment'):$cols->getName();
+
     }
 
 

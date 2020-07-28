@@ -1,0 +1,66 @@
+<?php
+
+namespace {{validate_namespace}};
+
+use Illuminate\Http\Request;
+use App\Http\Requests\BaseApiRequest;
+
+class {{validate_class}} extends BaseApiRequest
+{
+    protected $rules = [
+        {{rules}}
+    ];
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        //$params
+        $params = request()->all();
+        //$parameters
+        $parameters = request()->route()->parameters;
+        list($class, $method) = explode('@', Request::route()->getActionName());
+        //unique需要参数
+{{unique_vars}}
+        //根据场景不同，增加额外验证
+        switch($method){
+            //如果是创建
+            case 'store':
+                $rules_add = [
+{{rules_create}}
+                ];
+            break;
+            //如果是修改
+            case 'update':
+                $rules_add = [
+{{rules_update}}
+                ];
+            break;
+        }
+        $rules = array_merge($this->rules, $rules_add);
+        return $rules;
+    }
+
+
+    public function attributes()
+    {
+        return [
+            {{attributes_validate}}
+        ];
+    }
+
+    /**
+    * 获取已定义的验证规则的错误消息。
+    *
+    * @return array
+    */
+    public function messages()
+    {
+        return [
+
+        ];
+    }
+}
