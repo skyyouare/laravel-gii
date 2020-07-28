@@ -40,8 +40,17 @@ class {{validate_class}} extends BaseApiRequest
                 ];
             break;
         }
+        //组装
         $rules = array_merge($this->rules, $rules_add);
-        return $rules;
+        $sort = array_keys($this->attributes());
+        //按attributes排序
+        $rules_sort = [];
+        foreach ($sort as $key) {
+            if(isset($rules[$key])){
+                $rules_sort[$key] = $rules[$key];
+            }
+        }
+        return $rules_sort;
     }
 
 

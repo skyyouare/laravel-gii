@@ -280,6 +280,14 @@ class ModelGenerate extends BaseGenerate
             if (!empty($this->primary_key) && $col['name']== $this->primary_key) {
                 continue;
             }
+            //create at判断
+            if (!empty($this->create_at) && $col['name'] == $this->create_at){
+                continue;
+            }
+            //update at判断
+            if (!empty($this->update_at) && $col['name'] == $this->update_at){
+                continue;
+            }
             $fule_arr = [];
              //nullable
              if($col['notnull']===false){
@@ -324,6 +332,14 @@ class ModelGenerate extends BaseGenerate
             }
             //主键判断
             if (!empty($this->primary_key) && $name== $this->primary_key) {
+                continue;
+            }
+            //create at判断
+            if (!empty($this->create_at) && $name == $this->create_at){
+                continue;
+            }
+            //update at判断
+            if (!empty($this->update_at) && $name == $this->update_at){
                 continue;
             }
             //create
