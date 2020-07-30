@@ -22,7 +22,7 @@ class {{validate_class}} extends BaseApiRequest
         $params = request()->all();
         //$parameters
         $parameters = request()->route()->parameters;
-        list($class, $method) = explode('@', Request::route()->getActionName());
+        list($class, $method) = explode('@', request()->route()->getActionName());
         //unique需要参数
 {{unique_vars}}
         //根据场景不同，增加额外验证
