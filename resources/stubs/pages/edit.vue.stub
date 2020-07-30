@@ -64,6 +64,9 @@
         },
         mounted() {
             console.log("detail mounted.");
+            this.rules = {
+{{js_rules}}
+            };
             this.initDetailData();
         },
     }

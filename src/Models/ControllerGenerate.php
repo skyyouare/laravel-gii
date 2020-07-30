@@ -307,6 +307,7 @@ class ControllerGenerate extends BaseGenerate
             '{{rest_base_api}}'         => $this->getRestApiUrl(),
             '{{detail_api}}'            => $this->getApiUrl('detail'),
             '{{save_api}}'              => $this->getApiUrl('save'),
+            '{{js_rules}}'              => (new ModelGenerate($this->model->getTable(), '1', '1','1','1','1'))->getJsRules()
         ];
 
 
@@ -390,6 +391,7 @@ class ControllerGenerate extends BaseGenerate
             '{{base_route_path}}'       => $this->getBaseRoutePath(),
             '{{rest_base_api}}'         => $this->getRestApiUrl(),
             '{{save_api}}'              => $this->getApiUrl('save'),
+            '{{js_rules}}'              => (new ModelGenerate($this->model->getTable(), '1', '1','1',$this->model::CREATED_AT,$this->model::UPDATED_AT))->getJsRules()
         ];
 
 

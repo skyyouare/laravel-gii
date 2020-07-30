@@ -411,6 +411,83 @@ class ModelGenerate extends BaseGenerate
     /**
      * @return string
      */
+    public function getJsRules(){
+        $this->getTableColumns();
+        $rules = "\n";
+        $arr = [];
+        foreach ($this->tableColumns as $col) {
+            // The primary key is filtered when generating attributes. The primary key does not need a default value, otherwise the write will be empty or null
+            if (in_array($col['name'], ['id', '_id'])) {
+                continue;
+            }
+            //主键判断
+            if (!empty($this->primary_key) && $col['name']== $this->primary_key) {
+                continue;
+            }
+            //create at判断
+            if (!empty($this->create_at) && $col['name'] == $this->create_at){
+                continue;
+            }
+            //update at判断
+            if (!empty($this->update_at) && $col['name'] == $this->update_at){
+                continue;
+            }
+            //comment
+            $label = $this->getComment($col);
+            $fule_arr = [];
+            //nullable
+            $required = false;
+            if($col['notnull']){
+                $required = true;
+                if(!in_array($col['type'],['date', 'datetime', 'timestamp'])){
+                    $fule_arr[] = "{ required :true, message: '请输入".$label."', trigger: 'blur'}";
+                }
+            }
+            //type
+            switch($col['type']){
+                // case 'integer':
+                // case 'tinyint':
+                // case 'smallint':
+                // case 'mediumint':
+                // case 'bigint':
+                // case 'boolean':
+                //     $fule_arr[] = "{ type :integer, message: '请输入".$label."', trigger: 'blur'}";
+                // break;
+                // case 'float':
+                // case 'double':
+                // case 'decimal':
+                //     $fule_arr[] = "{ required :number, message: '请输入".$label."', trigger: 'blur'}";
+                // break;
+                case 'string':
+                    $fule_arr[] = "{ max:".$col['length'].", message:'长度不能超过".$col['length']."个字符', trigger: 'blur' }";
+                break;
+                case 'date':
+                case 'datetime':
+                case 'timestamp':
+                    if($required){
+                        $fule_arr[] = "{ type: 'string', required: true, message: '请选择".$label."', trigger: 'change' }";
+                    }else{
+                        $fule_arr[] = "{ type: 'string', required: false, message: '请选择".$label."', trigger: 'change' }";
+                    }
+
+                break;
+            }
+            $arr[$col['name']] = $fule_arr;
+        }
+
+        //base
+        $offset_base = 16;
+        $offset_add = $offset_base + 4;
+        foreach ($arr as $name => $fule_arr) {
+            $fule_str = "".implode(",\n". str_repeat(" ",$offset_add),$fule_arr)."";
+            $rules     .= str_repeat(" ",$offset_base) . $name . " : [\n". str_repeat(" ",$offset_add) . $fule_str . "\n". str_repeat(" ",$offset_base)."],\n";
+        }
+        return $rules;
+    }
+
+    /**
+     * @return string
+     */
     public function attributes()
     {
         // init table columns
