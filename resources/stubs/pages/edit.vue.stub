@@ -62,11 +62,13 @@
                 });
             }
         },
-        mounted() {
-            console.log("detail mounted.");
+        created() {
             this.rules = {
 {{js_rules}}
             };
+        },
+        mounted() {
+            console.log("detail mounted.");
             this.initDetailData();
         },
     }

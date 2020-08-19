@@ -711,16 +711,14 @@ class ControllerGenerate extends BaseGenerate
             <!--'.$comment.'-->
             <el-form-item label="'.$comment.'" prop="'.$col.'" style="width: 480px;">
                 <el-input v-model="data.'.$col.'"></el-input>
-            </el-form-item>
-            ';
+            </el-form-item>'."\n";
             break;
             case 'text':
                 $form_fields = '
             <!--'.$comment.'-->
             <el-form-item label="'.$comment.'" prop="'.$col.'" style="width: 480px;">
                 <el-input type="textarea" v-model="data.'.$col.'"></el-input>
-            </el-form-item>
-            ';
+            </el-form-item>'."\n";
             break;
             case 'datetime':
                 $form_fields = '
@@ -738,8 +736,7 @@ class ControllerGenerate extends BaseGenerate
                         </el-date-picker>
                     </el-form-item>
                 </el-col>
-            </el-form-item>
-            ';
+            </el-form-item>'."\n";
             break;
             break;
         }

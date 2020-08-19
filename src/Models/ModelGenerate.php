@@ -479,8 +479,13 @@ class ModelGenerate extends BaseGenerate
         $offset_base = 16;
         $offset_add = $offset_base + 4;
         foreach ($arr as $name => $fule_arr) {
-            $fule_str = "".implode(",\n". str_repeat(" ",$offset_add),$fule_arr)."";
-            $rules     .= str_repeat(" ",$offset_base) . $name . " : [\n". str_repeat(" ",$offset_add) . $fule_str . "\n". str_repeat(" ",$offset_base)."],\n";
+            //如何为空，空行从头开始
+            if(empty($fule_arr)){
+                $fule_str = "";
+            }else{
+                $fule_str = str_repeat(" ",$offset_add)."".implode(",\n". str_repeat(" ",$offset_add),$fule_arr)."";
+            }
+            $rules     .= str_repeat(" ",$offset_base) . $name . " : [\n".  $fule_str . "\n". str_repeat(" ",$offset_base)."],\n";
         }
         return $rules;
     }
