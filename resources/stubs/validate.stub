@@ -8,7 +8,7 @@ use App\Http\Requests\BaseApiRequest;
 class {{validate_class}} extends BaseApiRequest
 {
     protected $rules = [
-        {{rules}}
+{{rules}}
     ];
 
     /**
@@ -57,7 +57,7 @@ class {{validate_class}} extends BaseApiRequest
     public function attributes()
     {
         return [
-            {{attributes_validate}}
+{{attributes_validate}}
         ];
     }
 
