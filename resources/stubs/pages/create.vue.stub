@@ -54,11 +54,14 @@
                 });
             },
         },
-        mounted() {
-            console.log("detail mounted.");
+        created() {
+            console.log("create created.");
             this.rules = {
 {{js_rules}}
             };
+        },
+        mounted() {
+            console.log("create mounted.");
         },
     }
 </script>

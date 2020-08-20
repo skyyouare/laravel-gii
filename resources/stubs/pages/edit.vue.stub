@@ -63,12 +63,13 @@
             }
         },
         created() {
+            console.log("edit created.");
             this.rules = {
 {{js_rules}}
             };
         },
         mounted() {
-            console.log("detail mounted.");
+            console.log("edit mounted.");
             this.initDetailData();
         },
     }
