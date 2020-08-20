@@ -34,6 +34,10 @@ class ModelGenerate extends BaseGenerate
     /**
      * @var
      */
+    protected $select_fields;
+    /**
+     * @var
+     */
     protected $primary_key;
 
     /**
@@ -54,7 +58,7 @@ class ModelGenerate extends BaseGenerate
      * @param $modelParentClassName
      * @throws \Exception
      */
-    public function __construct($tableName, $baseModelClassName, $modelParentClassName, $primary_key,$create_at,$update_at)
+    public function __construct($tableName, $baseModelClassName, $modelParentClassName,$select_fields, $primary_key,$create_at,$update_at)
     {
         if(!$tableName || !$baseModelClassName || !$modelParentClassName || !$primary_key){
             throw new \Exception('params is empty!');
@@ -63,6 +67,7 @@ class ModelGenerate extends BaseGenerate
         $this->tableName            = $tableName;
         $this->baseModelClassName   = $baseModelClassName;
         $this->modelParentClassName = $modelParentClassName;
+        $this->select_fields        = explode(',',$select_fields);
         $this->primary_key          = $primary_key;
         $this->create_at            = $create_at;
         $this->update_at            = $update_at;
@@ -113,6 +118,7 @@ class ModelGenerate extends BaseGenerate
         $update_at = $this->update_at ? "'".$this->update_at."'" : "null";
 
         $rules = $this->createRules();
+        $select_fields = $this->getSelectFields();
 
         $fields = [
             '{{validate_class}}'           => $validateClass,
@@ -137,6 +143,8 @@ class ModelGenerate extends BaseGenerate
             '{{search_type}}'             => $this->getSearchType(),
             '{{observer_class}}'          => $observerClass,
             '{{primary_key}}'             => $this->primary_key,
+            '{{dict_type}}'               => $this->getDictType(),
+            "{{select_fields}}"           => $select_fields,
             '{{create_at}}'               => $create_at,
             '{{update_at}}'               => $update_at,
         ];
@@ -257,6 +265,30 @@ class ModelGenerate extends BaseGenerate
         return $str;
     }
 
+    /**
+     * @return string
+     */
+    private function getSelectFields(){
+        $str = "\n";
+        foreach($this->select_fields as $fields){
+            $str     .= str_repeat(" ",12)."'" . $fields ."',\n";
+        }
+        return $str;
+    }
+    /**
+     * @return string
+     */
+    private function getDictType(){
+        $str = "";
+        foreach($this->select_fields as $k=> $fields){
+            $str     .= str_repeat(" ",10)." case '" . $fields ."':\n";
+            $str     .= str_repeat(" ",14)." //break;";
+            if($k!=count($this->select_fields)-1){
+                $str.="\n";
+            }
+        }
+        return $str;
+    }
 
     /**
      * @return string

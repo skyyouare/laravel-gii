@@ -27,16 +27,6 @@ class {{controller_class}} extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return $this->no('弃用');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,18 +49,6 @@ class {{controller_class}} extends Controller
     {
         $ret = {{model_class}}::getDetailById($id);
         return $this->ok($ret);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-        return $this->no('弃用');
     }
 
     /**
@@ -99,6 +77,21 @@ class {{controller_class}} extends Controller
     {
         $ret = {{model_class}}::deleteById($id);
         return $this->ok($ret);
+    }
+
+
+    /**
+    * 获取字典
+    */
+    public function dict(){
+        $model = new {{model_class}}();
+         $fields = $model->select_fields();
+         $return = [];
+         foreach($fields as $field){
+             $name = 'dic_'.$field;
+             $return[$name]= $model->get_dicts($name);
+         }
+         return $this->ok($return);
     }
 
 }

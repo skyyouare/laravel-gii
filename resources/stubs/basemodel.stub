@@ -26,7 +26,7 @@ class {{base_model_class}} extends {{model_parent_class}}
 
     // default values
     protected $attributes = [
-        {{attributes}}
+{{attributes}}
     ];
 
     // converting attributes to common data types. like 'is_admin' => 'boolean',
@@ -34,11 +34,32 @@ class {{base_model_class}} extends {{model_parent_class}}
 
     ];
 
+    //下拉框选择
+    public function select_fields(){
+        return [
+{{select_fields}}
+        ];
+    }
+    //字典
+    public function get_dicts($type){
+        $arr = [];
+        switch ($type) {
+            //这里需要自己配置，打开break注释，自己配置数组
+{{dict_type}}
+            default:
+                $arr = [
+                    '1'=>'aaa',
+                    '2'=>'bbb'
+                ];
+                break;
+        }
+        return $arr;
+    }
 
     //高级搜索定义 支持 = like > < >= <=
     public  function  search_type($model){
         return [
-            {{search_type}}
+{{search_type}}
         ];
     }
 

@@ -44,6 +44,11 @@
                         <i-option v-for="item in parent_class_name_arr" :value="item">@{{ item }}</i-option>
                     </i-select>
                 </i-form-item>
+                <i-form-item label="select fileds">
+                    <i-select name="select_fields" multiple :model.sync="select_fields" :value="select_fields"  style="width:300px">
+                        <i-option v-for="item in fields" :value="item.name">@{{ item.name }}</i-option>
+                    </i-select>
+                </i-form-item>
                 <i-form-item label="Primary key">
                     <i-select name="primary_key" :model.sync="primary_key" :value="primary_key"  style="width:300px">
                         <i-option v-for="item in fields" :value="item.name">@{{ item.name }}</i-option>
@@ -135,6 +140,7 @@
                 model_class_name_arr:[],
                 parent_class_name:'',
                 parent_class_name_arr:[],
+                select_fields:[],
                 primary_key:'',
                 create_at:'',
                 create_at_arr:[],
@@ -298,7 +304,10 @@
                             "{{$f}}",
                         @endforeach
                     ];
-                }
+                },
+                set_select_fields(){
+                    this.select_fields = "{{request()->select_fields}}".split(',');
+                },
             },
             mounted() {
                 this.model_class_name = "{{str_replace('\\','\\\\',request()->model_class_name)}}";
@@ -308,6 +317,7 @@
                 @endif
                 this.parent_class_name = "{{str_replace('\\','\\\\',request()->parent_class_name?request()->parent_class_name:config('gii.base_model_defaults')[0])}}";
                 this.set_parent_class_names();
+                this.set_select_fields();
                 this.primary_key = '{{request()->primary_key}}';
                 this.create_at = "{{str_replace('\\','\\\\',request()->create_at)}}";
                 this.update_at = "{{str_replace('\\','\\\\',request()->update_at)}}";

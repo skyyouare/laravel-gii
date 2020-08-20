@@ -307,7 +307,7 @@ class ControllerGenerate extends BaseGenerate
             '{{rest_base_api}}'         => $this->getRestApiUrl(),
             '{{detail_api}}'            => $this->getApiUrl('detail'),
             '{{save_api}}'              => $this->getApiUrl('save'),
-            '{{js_rules}}'              => (new ModelGenerate($this->model->getTable(), '1', '1','1','1','1'))->getJsRules()
+            '{{js_rules}}'              => (new ModelGenerate($this->model->getTable(), '1', '1','','1','1','1'))->getJsRules()
         ];
 
 
@@ -391,7 +391,7 @@ class ControllerGenerate extends BaseGenerate
             '{{base_route_path}}'       => $this->getBaseRoutePath(),
             '{{rest_base_api}}'         => $this->getRestApiUrl(),
             '{{save_api}}'              => $this->getApiUrl('save'),
-            '{{js_rules}}'              => (new ModelGenerate($this->model->getTable(), '1', '1','1',$this->model::CREATED_AT,$this->model::UPDATED_AT))->getJsRules()
+            '{{js_rules}}'              => (new ModelGenerate($this->model->getTable(), '1', '1','','1',$this->model::CREATED_AT,$this->model::UPDATED_AT))->getJsRules()
         ];
 
 
@@ -456,7 +456,15 @@ class ControllerGenerate extends BaseGenerate
             // $apiRoutes[] = "Route::any('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "/{$name}', '{$controller}@{$action}');";
         // }
         //使用resource路由
-        $apiRoutes[] = "Route::resource('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "', '{$controller}' );";
+        // $apiRoutes[] = "Route::resource('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "', '{$controller}' );";
+        //resource路由优化
+        $apiRoutes[] = "Route::get('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "', '{$controller}@index');";
+        $apiRoutes[] = "Route::post('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "', '{$controller}@store');";
+        $apiRoutes[] = "Route::put('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "/{id}" . "', '{$controller}@update');";
+        $apiRoutes[] = "Route::delete('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "/{id}" . "', '{$controller}@destroy');";
+        $apiRoutes[] = "Route::get('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "/{id}" . "', '{$controller}@show');";
+
+        $apiRoutes[] = "Route::get('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "/dict', '{$controller}@dict');";
         $apiRoutesStr = join("\n", $apiRoutes) . "\n";
         return self::handleRouteFile($apiRoutesStr, 'api');
     }

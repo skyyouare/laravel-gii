@@ -102,6 +102,10 @@ class GiiServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/Exceptions' =>  base_path('App/Exceptions'),
         ], 'gii.exception');
+        //publishing provider
+        $this->publishes([
+            __DIR__.'/../resources/Providers' =>  base_path('App/Providers'),
+        ], 'gii.provider');
         // Registering package commands.
         // $this->commands([]);
     }

@@ -22,10 +22,10 @@ class ModelController extends Controller
                 $modelClassName  = trim($request->post('model_class_name'));
                 $parentClassName = trim($request->post('parent_class_name'));
                 $primary_key     = trim($request->post('primary_key'));
+                $select_fields   = trim($request->post('select_fields'));
                 $create_at       = trim($request->post('create_at'));
                 $update_at       = trim($request->post('update_at'));
-
-                $obj = new ModelGenerate($tableName, $modelClassName, $parentClassName,$primary_key,$create_at,$update_at);
+                $obj = new ModelGenerate($tableName, $modelClassName, $parentClassName,$select_fields,$primary_key,$create_at,$update_at);
                 //fileList
                 $fileList = $obj->preview();
                 $response['files'] = $fileList;
@@ -55,7 +55,6 @@ class ModelController extends Controller
                 'message' => $exception->getMessage()
             ];
         }
-
         $viewPath = 'gii_views::model';
         return response()->view($viewPath, $response);
     }
@@ -63,7 +62,7 @@ class ModelController extends Controller
 
     public function fields(Request $request){
         $tableName       = trim($request->post('table_name'));
-        $attributes = (new ModelGenerate($tableName, '1', '1','1','1','1'))->attributes();
+        $attributes = (new ModelGenerate($tableName, '1', '1','','1','1','1'))->attributes();
         return $attributes;
     }
 }
