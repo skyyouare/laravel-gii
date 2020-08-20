@@ -25,7 +25,8 @@
 {{fields_info}}
                 },
                 rules: {
-                }
+                },
+                dicts:[],
             };
         },
         methods: {
@@ -58,7 +59,20 @@
                 var url = '{{rest_base_api}}/' + this.$route.query.id;
                 selfthis.ajaxGet(selfthis, url, params, function (selfthis, datas) {
                     //详情
-                    selfthis.data = datas;
+                    for(let key in selfthis.data){
+                         selfthis.data[key] = datas[key] + "";
+                    }
+                    //selfthis.data = datas;
+                });
+            },
+            initDcit: function() {
+                var selfthis = this;
+                var params = {};
+                var url = '{{rest_base_api}}/dict'
+                selfthis.ajaxGet(selfthis, url, params, function (selfthis, datas) {
+                    //详情
+                    selfthis.dicts = datas;
+                    console.log(selfthis.dicts);
                 });
             }
         },
@@ -70,6 +84,7 @@
         },
         mounted() {
             console.log("edit mounted.");
+            this.initDcit();
             this.initDetailData();
         },
     }

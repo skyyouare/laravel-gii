@@ -383,7 +383,7 @@ class ModelGenerate extends BaseGenerate
             $fule_arr_update_item = 'unique:'.$this->tableName.','.$name.',\'.$id.\','.$this->primary_key.'';
 
             //parameters
-            $parameters_name = strtolower(str_replace('_', '', $this->tableName));
+            $parameters_name = 'id';
             $arr_unique[] = '$id = isset($parameters[\''.$parameters_name.'\']) ? $parameters[\''.$parameters_name.'\'] : \'\';';
             foreach($unique as $k=>$v){
                 if($k==0) continue;

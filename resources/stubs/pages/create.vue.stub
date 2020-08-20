@@ -26,7 +26,8 @@
 {{fields_info}}
                 },
                 rules: {
-                }
+                },
+                dicts:[],
             };
         },
         methods: {
@@ -53,6 +54,16 @@
                     }
                 });
             },
+            initDcit: function() {
+                var selfthis = this;
+                var params = {};
+                var url = '{{rest_base_api}}/dict'
+                selfthis.ajaxGet(selfthis, url, params, function (selfthis, datas) {
+                    //详情
+                    selfthis.dicts = datas;
+                    console.log(selfthis.dicts);
+                });
+            }
         },
         created() {
             console.log("create created.");
@@ -62,6 +73,7 @@
         },
         mounted() {
             console.log("create mounted.");
+            this.initDcit();
         },
     }
 </script>

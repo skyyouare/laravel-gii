@@ -289,7 +289,11 @@ class ControllerGenerate extends BaseGenerate
             if(in_array($col,[$this->model::CREATED_AT,$this->model::UPDATED_AT])){
                 continue;
             }
-            $fields .= "                    {$col}:'',\n";
+
+            if($k_col!=0){
+                $fields .="\n";
+            }
+            $fields .= "                    {$col}:'',";
             //comment
             $comment = $this->getComment($comments, $col);
             //根据类型
@@ -333,7 +337,10 @@ class ControllerGenerate extends BaseGenerate
         $detail_fields = '';
         $counts = count($cols) - 1;
         foreach ($cols as $k_col => $col) {
-            $fields .= "                    {$col}:'',\n";
+            if($k_col!=0){
+                $fields .="\n";
+            }
+            $fields .= "                    {$col}:'',";
             //comment
             $comment = $this->getComment($comments, $col);
             //根据类型
@@ -375,7 +382,10 @@ class ControllerGenerate extends BaseGenerate
             if(in_array($col,[$this->model::CREATED_AT,$this->model::UPDATED_AT])){
                 continue;
             }
-            $fields .= "                    {$col}:'',\n";
+            if($k_col!=0){
+                $fields .="\n";
+            }
+            $fields .= "                    {$col}:'',";
             //comment
             $comment = $this->getComment($comments, $col);
             //根据类型
@@ -463,7 +473,6 @@ class ControllerGenerate extends BaseGenerate
         $apiRoutes[] = "Route::put('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "/{id}" . "', '{$controller}@update');";
         $apiRoutes[] = "Route::delete('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "/{id}" . "', '{$controller}@destroy');";
         $apiRoutes[] = "Route::get('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "/{id}" . "', '{$controller}@show');";
-
         $apiRoutes[] = "Route::get('" . str_replace(DIRECTORY_SEPARATOR, '/', $m2cPath) . "/dict', '{$controller}@dict');";
         $apiRoutesStr = join("\n", $apiRoutes) . "\n";
         return self::handleRouteFile($apiRoutesStr, 'api');
@@ -710,6 +719,20 @@ class ControllerGenerate extends BaseGenerate
      * @return void
      */
     private function getFormItemByType($k_col, $col,$comment,$type){
+        $select_fields  = $this->model->select_fields();
+        if(!empty($select_fields)){
+            if(in_array($col,$select_fields)){
+                $form_fields = '
+            <!--'.$comment.'-->
+            <el-form-item label="'.$comment.'" prop="'.$col.'">
+                <el-select v-model="data.'.$col.'" placeholder="请选择'.$comment.'">
+                    <el-option :key="key" :label="item" :value="key" v-for="(item,key) in dicts.dic_'.$col.'">
+                    </el-option>
+                </el-select>
+            </el-form-item>'."\n";
+                return $form_fields;
+            }
+        }
         switch($type){
             case 'integer':
             case 'string':
