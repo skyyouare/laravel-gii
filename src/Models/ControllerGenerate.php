@@ -229,6 +229,14 @@ class ControllerGenerate extends BaseGenerate
                     $hsearchFields .="\n";
                 }
             }
+            //赋值
+            $item_val = "items.".$col;
+            $select_fields  = $this->model->select_fields();
+            if(!empty($select_fields)){
+                if(in_array($col,$select_fields)){
+                    $item_val = "dicts['dic_".$col."'][items.".$col."]?dicts['dic_".$col."'][items.".$col."]:''";
+                }
+            }
             //table_header 超过7列注释代码
             if($k <= 7){
                 $style_header = '';
@@ -240,12 +248,12 @@ class ControllerGenerate extends BaseGenerate
 
                 $table_header .= "\n".str_repeat(" ",$table_base_offset)."<div class=\"td\"".$style_header.">".$comment."</div>";
                 $table_body   .= "\n".str_repeat(" ",$table_base_offset)."<div class=\"td\"".$style_body.">";
-                $table_body   .= "\n".str_repeat(" ",$table_in_offset)."<p>{{items.".$col."}}</p>";
+                $table_body   .= "\n".str_repeat(" ",$table_in_offset)."<p>{{".$item_val."}}</p>";
                 $table_body   .= "\n".str_repeat(" ",$table_base_offset)."</div>";
             }else{
                 $table_header .= "\n".str_repeat(" ",$table_base_offset)."<!-- <div class=\"td\">".$comment."</div> -->";
                 $table_body   .= "\n".str_repeat(" ",$table_base_offset)."<!-- <div class=\"td\">";
-                $table_body   .= "\n".str_repeat(" ",$table_in_offset)."<p>{{items.".$col."}}</p>";
+                $table_body   .= "\n".str_repeat(" ",$table_in_offset)."<p>{{".$item_val."}}</p>";
                 $table_body   .= "\n".str_repeat(" ",$table_base_offset)."</div> -->";
             }
 
@@ -360,6 +368,7 @@ class ControllerGenerate extends BaseGenerate
             '{{detail_fields}}'           => $detail_fields,
             '{{rest_base_api}}'          => $this->getRestApiUrl(),
             '{{detail_api}}'            => $this->getApiUrl('detail'),
+            '{{dicts}}'                  => $this->getDicts('dicts')
         ];
 
         return self::handleViewFile($this->controllerNamespace, $this->controllerClass, $fields, $stubFile, 'detail');
@@ -829,9 +838,17 @@ class ControllerGenerate extends BaseGenerate
         if($k_col%2==0){
             $detail_fields .= str_repeat(" ",$base_offset).'<el-row  :gutter="10" class="c_elrow">'."\n";
         }
+        //赋值
+        $item_val = "data.".$col;
+        $select_fields  = $this->model->select_fields();
+        if(!empty($select_fields)){
+            if(in_array($col,$select_fields)){
+                $item_val = "dicts['dic_".$col."'][data.".$col."]?dicts['dic_".$col."'][data.".$col."]:''";
+            }
+        }
         //text
         $detail_fields .= str_repeat(" ",$add_offset).'<el-col :span="elcolspan" class="c_eltab lh30">'.$comment.'：</el-col>'."\n";
-        $detail_fields .= str_repeat(" ",$add_offset).'<el-col :span="8" class="lh30">{{data.'.$col.'}}</el-col>';
+        $detail_fields .= str_repeat(" ",$add_offset).'<el-col :span="8" class="lh30">{{'.$item_val.'}}</el-col>';
         if($k_col%2==1 || $k_col==$counts){
             $detail_fields .="\n".str_repeat(" ",$base_offset)."</el-row>";
         }
