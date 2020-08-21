@@ -224,7 +224,10 @@ class ControllerGenerate extends BaseGenerate
             $hsearchFields .= $this->getHsearchStrByType($col,$comment,$type);
 
             if($k%2 == 1 || $k ==count($cols)-1){
-                $hsearchFields .= "                    ],\n";
+                $hsearchFields .= "                    ],";
+                if($k!=count($cols)-1){
+                    $hsearchFields .="\n";
+                }
             }
             //table_header 超过7列注释代码
             if($k <= 7){
@@ -264,6 +267,7 @@ class ControllerGenerate extends BaseGenerate
             '{{list_api}}'               => $this->getApiUrl('list'),
             '{{delete_api}}'             => $this->getApiUrl('delete'),
             '{{batch_delete_api}}'       => $this->getApiUrl('batch_delete'),
+            '{{dicts}}'                  => $this->getDicts('dicts')
         ];
         return self::handleViewFile($this->controllerNamespace, $this->controllerClass, $fields, $stubFile, 'list');
     }
@@ -691,6 +695,14 @@ class ControllerGenerate extends BaseGenerate
      * @return void
      */
     private function getHsearchStrByType($col,$comment,$type){
+        $select_fields  = $this->model->select_fields();
+        if(!empty($select_fields)){
+            if(in_array($col,$select_fields)){
+                $dic_name = 'dic_'.$col;
+                $return =  "                       { id: '{$col}', name: '{$comment}', type: 'select', default: '', span: 12, dic: '".$dic_name."' },\n";
+                return $return;
+            }
+        }
         switch($type){
             case 'integer':
             case 'string':
@@ -706,6 +718,24 @@ class ControllerGenerate extends BaseGenerate
 
         return $return;
     }
+
+    /**
+     * 获取字典
+     *
+     * @return void
+     */
+    private function getDicts(){
+        $str = "";
+        $select_fields  = $this->model->select_fields();
+        foreach($select_fields as $k=> $fields){
+            $str     .= str_repeat(" ",19)." 'dic_".$fields."':[],";
+            if($k!=count($select_fields)-1){
+                $str.="\n";
+            }
+        }
+        return $str;
+    }
+
     /**
      * 获取form string
      *

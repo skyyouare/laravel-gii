@@ -32,8 +32,7 @@
                             <el-col :span="item.span">
                                 <el-form-item :label="item.name" :prop="item.id">
                                     <el-select v-model="highSearch_data[item.id]" :placeholder="'请选择'+item.name" style="width: 100%;">
-                                        <el-option :key="item_dic.key" :label="item_dic.val" :value="item_dic.key" v-for="(item_dic,key_dic) in item.dic">
-                                        </el-option>
+                                        <el-option :key="key" :label="item" :value="key" v-for="(item,key) in  dicts[item.dic]"></el-option>
                                     </el-select>
                                 </el-form-item>
                               </el-col>
@@ -89,6 +88,8 @@
             hsearch_fields: {
                 type: Array,
                 default: () => ([])
+            },
+            dicts :{
             },
         },
         data() {
@@ -183,7 +184,6 @@
 
             },
             highsearch_submit() {
-                console.log(this.highSearch_data.updated_at);
                 //搜索赋值
                 this.hsearch_fields.forEach(hsearch_field=>{
                     hsearch_field.forEach(v=>{

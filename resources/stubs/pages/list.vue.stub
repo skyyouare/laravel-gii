@@ -7,7 +7,7 @@
                 </div>
                 <div class="operate">
                     <div class="btn_normal btn_special" @click="handle_add()">新增</div>
-                    <Hsearch-component ref="hesarch_ref" :hsearch_fields="hsearch_fields"></Hsearch-component>
+                    <Hsearch-component ref="hesarch_ref" :hsearch_fields="hsearch_fields" :dicts="dicts"></Hsearch-component>
                 </div>
             </div>
             <div class="table_title">
@@ -50,7 +50,10 @@
 {{hsearchFields}}
                 ],
                 page_total: 0,
-                list: []
+                list: [],
+                dicts:{
+{{dicts}}
+                },
             }
         },
         methods: {
@@ -100,11 +103,22 @@
                         location.href='{{base_route_path}}/list';
                     },1000);
                 })
-            }
+            },
+            initDcit: function() {
+                var selfthis = this;
+                var params = {};
+                var url = '{{rest_base_api}}/dict'
+                selfthis.ajaxGet(selfthis, url, params, function (selfthis, datas) {
+                    //详情
+                    selfthis.dicts = datas;
+                    console.log(selfthis.dicts);
+                });
+            },
         },
         mounted() {
             console.log("list mounted.");
             var params = {};
+            this.initDcit();
             this.$refs.page_ref.page_init(this.initlist, params);
         },
     }

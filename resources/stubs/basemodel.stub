@@ -48,8 +48,8 @@ class {{base_model_class}} extends {{model_parent_class}}
 {{dict_type}}
             default:
                 $arr = [
-                    '1'=>'aaa',
-                    '2'=>'bbb'
+                    '1' => 'aaa',
+                    '2' => 'bbb'
                 ];
                 break;
         }
