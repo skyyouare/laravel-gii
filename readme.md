@@ -1,4 +1,4 @@
-# # laravel-gii 可视化代码生成工具 CRUD +GUI
+## laravel-gii 可视化代码生成工具 CRUD +GUI
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -6,6 +6,7 @@
 
 
 > Laravel Gii  参考sunshinev/laravel-gii，使用laravel7 + vue + elemnt-ui 架构，api使用resftul api，前后端分离,项目代码使用php artisan vendor:publish发布后，不依赖扩展本身，全部部署到项目各目录下,可根据需求灵活修改
+
 
 [TOC]
 
