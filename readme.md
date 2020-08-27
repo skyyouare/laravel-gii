@@ -9,9 +9,9 @@
 
 [TOC]
 
-##demo
-gii地址：http://49.233.68.29/gii/model
-访问地址（例）：http://49.233.68.29/alarmlog/list
+## demo
+1. gii地址：http://49.233.68.29/gii/model
+2. 访问地址（例）：http://49.233.68.29/alarmlog/list
 ## 原理
 
 1. 通过解析MySQL的数据表结构，来提取字段、以及类型，并填充到`stub`模板。
