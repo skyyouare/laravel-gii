@@ -87,6 +87,8 @@ http:[domain]/gii/model
 ```
 通过上面的结构，我们可以发现命名空间与目录之间的关系。
 
+![images](https://github.com/skyyouare/laravel-gii/blob/master/images/gen_model.png)
+
 ### 生成CRUD
 
 CRUD的创建，需要依赖之前创建的模型。
@@ -135,6 +137,11 @@ CRUD的创建，需要依赖之前创建的模型。
                 ├── create.vue
                 └── detail.vue
 ```
+
+
+![images](https://github.com/skyyouare/laravel-gii/blob/master/images/gen_crud.png)
+
+
 #### 如何访问CRUD?
 ***注意：路由是追加的，请勿多次生成***
 CRUD的路由会自动添加到路由文件中，根据Controller的命名空间`App\Http\Controllers\Admin\AlarmLogController`会生成如下的路由，所以请直接访问路由
