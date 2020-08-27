@@ -172,7 +172,7 @@ CRUD的路由会自动添加到路由文件中，根据Controller的命名空间
 - 详情
 - 编辑
 
-![截屏2020-08-27 下午6.11.24](media/15985194419423/%E6%88%AA%E5%B1%8F2020-08-27%20%E4%B8%8B%E5%8D%886.11.24.png)
+[](https://github.com/skyyouare/laravel-gii/blob/master/images/list.png)
 
 
 
@@ -181,19 +181,18 @@ CRUD的路由会自动添加到路由文件中，根据Controller的命名空间
 #### 快捷搜索
 
 
-![截屏2020-08-27 下午6.12.05](media/15985194419423/%E6%88%AA%E5%B1%8F2020-08-27%20%E4%B8%8B%E5%8D%886.12.05.png)
+[](https://github.com/skyyouare/laravel-gii/blob/master/images/search.png)
 
 
 
 #### 添加页面
-![截屏2020-08-27 下午6.12.20](media/15985194419423/%E6%88%AA%E5%B1%8F2020-08-27%20%E4%B8%8B%E5%8D%886.12.20.png)
+[](https://github.com/skyyouare/laravel-gii/blob/master/images/add.png)
 
 ### 编辑页面
-![截屏2020-08-27 下午6.12.25](media/15985194419423/%E6%88%AA%E5%B1%8F2020-08-27%20%E4%B8%8B%E5%8D%886.12.25.png)
+[](https://github.com/skyyouare/laravel-gii/blob/master/images/edit.png)
 
 ### 详情
-![截屏2020-08-27 下午6.12.14](media/15985194419423/%E6%88%AA%E5%B1%8F2020-08-27%20%E4%B8%8B%E5%8D%886.12.14.png)
-
+[](https://github.com/skyyouare/laravel-gii/blob/master/images/detail.png)
 
 ## License
 
