@@ -32,6 +32,7 @@ class BaseGenerate
 
         $defaultPath = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR . $class . '.php';
         // if class file do not exits, then  generate virtual path
+        $defaultPath = lcfirst($defaultPath);
         $virtualPath = base_path($defaultPath);
         $isNewFile   = file_exists($virtualPath) ? false : true;
         // if file exists
