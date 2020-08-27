@@ -172,7 +172,8 @@ CRUD的路由会自动添加到路由文件中，根据Controller的命名空间
 - 详情
 - 编辑
 
-[](https://github.com/skyyouare/laravel-gii/blob/master/images/list.png)
+![images](https://github.com/skyyouare/laravel-gii/blob/master/images/list.png)
+
 
 
 
@@ -181,18 +182,18 @@ CRUD的路由会自动添加到路由文件中，根据Controller的命名空间
 #### 快捷搜索
 
 
-[](https://github.com/skyyouare/laravel-gii/blob/master/images/search.png)
+![images](https://github.com/skyyouare/laravel-gii/blob/master/images/search.png)
 
 
 
 #### 添加页面
-[](https://github.com/skyyouare/laravel-gii/blob/master/images/add.png)
+![images](https://github.com/skyyouare/laravel-gii/blob/master/images/add.png)
 
 ### 编辑页面
-[](https://github.com/skyyouare/laravel-gii/blob/master/images/edit.png)
+![images](https://github.com/skyyouare/laravel-gii/blob/master/images/edit.png)
 
 ### 详情
-[](https://github.com/skyyouare/laravel-gii/blob/master/images/detail.png)
+![images](https://github.com/skyyouare/laravel-gii/blob/master/images/detail.png)
 
 ## License
 
