@@ -87,7 +87,8 @@ http:[domain]/gii/model
 ```
 通过上面的结构，我们可以发现命名空间与目录之间的关系。
 
-![images](https://github.com/skyyouare/laravel-gii/blob/master/images/gen_model.png)
+![images](https://github.com/skyyouare/laravel-gii/blob/master/images/gen_model.gif)
+
 
 ### 生成CRUD
 
@@ -139,7 +140,7 @@ CRUD的创建，需要依赖之前创建的模型。
 ```
 
 
-![images](https://github.com/skyyouare/laravel-gii/blob/master/images/gen_crud.png)
+![images](https://github.com/skyyouare/laravel-gii/blob/master/images/gen_crud.gif)
 
 
 #### 如何访问CRUD?
