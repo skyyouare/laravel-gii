@@ -100,11 +100,11 @@ class GiiServiceProvider extends ServiceProvider
         ], 'gii.route');
         //exception route
         $this->publishes([
-            __DIR__.'/../resources/Exceptions' =>  base_path('App/Exceptions'),
+            __DIR__.'/../resources/Exceptions' =>  base_path('app/Exceptions'),
         ], 'gii.exception');
         //publishing provider
         $this->publishes([
-            __DIR__.'/../resources/Providers' =>  base_path('App/Providers'),
+            __DIR__.'/../resources/Providers' =>  base_path('app/Providers'),
         ], 'gii.provider');
         // Registering package commands.
         // $this->commands([]);
