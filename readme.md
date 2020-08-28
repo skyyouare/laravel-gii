@@ -5,7 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 
 
-> Laravel Gii  参考sunshinev/laravel-gii，使用laravel7 + vue + elemnt-ui 架构，api使用resftul api，前后端分离,项目代码使用php artisan vendor:publish发布后，不依赖扩展本身，全部部署到项目各目录下,可根据需求灵活修改
+> Laravel Gii  参考[sunshinev/laravel-gii](https://github.com/sunshinev/laravel-gii)，使用laravel7 + vue + elemnt-ui 架构，api使用resftul api，前后端分离,项目代码使用php artisan vendor:publish发布后，不依赖扩展本身，全部部署到项目各目录下,可根据需求灵活修改
 
 
 [TOC]
