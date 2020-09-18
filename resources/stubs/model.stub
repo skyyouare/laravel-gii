@@ -129,10 +129,11 @@ class {{base_model_class}}Model extends {{base_model_class}}
                 if (isset($params[$keyName]) && $params[$keyName]) {
                     $cond[] = [$keyName,'=',$params[$keyName]];
                 }
+                //获取搜索配置
+                $search_type = $ins->search_type($params);
                 foreach ($params as $k => $v) {
                     //数组和空值过滤
                     if(!is_array($v) && !is_null($v) && $v!==''){
-                        $search_type = $ins->search_type($ins);
                         if(isset($search_type[$k])){
                             $search_key = $search_type[$k];
                             if(is_array($search_key)){

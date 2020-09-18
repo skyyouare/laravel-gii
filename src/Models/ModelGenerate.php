@@ -592,7 +592,7 @@ class ModelGenerate extends BaseGenerate
             if (in_array($col['type'],['date','datetime'])) {
                 $seach_type = "['".$col['name']."', '>=']";
                 $str     .= "            '" . $col['name'] . "_start' => " . $seach_type . ",\n";
-                $seach_type = "['".$col['name']."', '<',  date('Y-m-d', (strtotime(\$model->".$col['name'].") + 3600*24))]";
+                $seach_type = "['".$col['name']."', '<', \$this->day_2_next_day(\$params,'".$col['name']."_end')]";
                 $str     .= "            '" . $col['name'] . "_end' => " . $seach_type . ",\n";
             }else{
                 $seach_type = "'='";

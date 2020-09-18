@@ -57,10 +57,20 @@ class {{base_model_class}} extends {{model_parent_class}}
     }
 
     //高级搜索定义 支持 = like > < >= <=
-    public  function  search_type($model){
+    public  function  search_type($params){
         return [
 {{search_type}}
         ];
+    }
+
+    //搜索时间转化--获取下一天
+    public function day_2_next_day($params,$field){
+        if(isset($params[$field])){
+            return  date('Y-m-d', (strtotime($params['alarm_time_end']) + 3600*24));
+        }else{
+            return null;
+        }
+
     }
 
     /**
